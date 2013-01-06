@@ -1,0 +1,18 @@
+[uwsgi]
+# Define variables
+project = %n
+base_dir = /home/<%= user %>/virtualenvs/<%= domain_name %>
+
+# Config
+uid = www-data
+gid = www-data
+
+socket = /tmp/uwsgi/%(project).sock
+master = true
+no-orphans = true
+
+chdir = %(base_dir)/%(project)
+module = %(project).wsgi:application
+virtualenv = %(base_dir)
+
+logto = /var/log/uwsgi/%(project).log
