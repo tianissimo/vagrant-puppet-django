@@ -1,6 +1,6 @@
 # Vagrant-Puppet-Django
 
-This is a Vagrant Ubuntu (Precise32) box with Puppet manifests for Django development.
+This is a Vagrant Ubuntu (Precise32) box with a single Puppet manifests file (no modules) for Django development.
 
 ## What's included
 
