@@ -221,7 +221,7 @@ class virtualenv {
     command => "virtualenv ${domain_name}",
     cwd => "/home/${user}/virtualenvs",
     user => $user,
-    unless => 'ls /home/${user}/virtualenvs/${domain_name}',
+    unless => 'test -d /home/${user}/virtualenvs/${domain_name}',
     require => Package['virtualenv']
   }
   
@@ -244,17 +244,17 @@ class pildeps {
   
   exec { 'pil png':
     command => 'sudo ln -s /usr/lib/`uname -i`-linux-gnu/libz.so /usr/lib/',
-    unless => 'ls /usr/lib/libz.so'
+    unless => 'test -L /usr/lib/libz.so'
   }
 
   exec { 'pil jpg':
     command => 'sudo ln -s /usr/lib/`uname -i`-linux-gnu/libjpeg.so /usr/lib/',
-    unless => 'ls /usr/lib/libjpeg.so'
+    unless => 'test -L /usr/lib/libjpeg.so'
   }
   
   exec { 'pil freetype':
     command => 'sudo ln -s /usr/lib/`uname -i`-linux-gnu/libfreetype.so /usr/lib/',
-    unless => 'ls /usr/lib/libfreetype.so'
+    unless => 'test -L /usr/lib/libfreetype.so'
   }
 }
 
