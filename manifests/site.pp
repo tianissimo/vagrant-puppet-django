@@ -114,6 +114,10 @@ class nginx {
 }
 
 class uwsgi { 
+  $sock_dir = '/tmp/uwsgi' # Without a trailing slash
+  $uwsgi_user = 'www-data'
+  $uwsgi_group = 'www-data'
+  
   package { 'uwsgi':
     ensure => latest,
     provider => pip,
@@ -127,10 +131,17 @@ class uwsgi {
   }
   
   # Prepare directories
-  file { ['/tmp/uwsgi', '/var/log/uwsgi', '/etc/uwsgi', '/etc/uwsgi/apps-available', '/etc/uwsgi/apps-enabled']:
+  file { ['/var/log/uwsgi', '/etc/uwsgi', '/etc/uwsgi/apps-available', '/etc/uwsgi/apps-enabled']:
     ensure => directory,
     require => Package['uwsgi'],
     before => File['apps-available config']
+  }
+  
+  # Prepare a directory for sock file
+  file { [$sock_dir]:
+    ensure => directory,
+    owner => "${uwsgi_user}",
+    require => Package['uwsgi']
   }
   
   # Upstart file

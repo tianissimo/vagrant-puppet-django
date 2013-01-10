@@ -4,10 +4,10 @@ project = %n
 base_dir = /home/<%= user %>/virtualenvs/<%= domain_name %>
 
 # Config
-uid = www-data
-gid = www-data
+uid = <%= uwsgi_user %>
+gid = <%= uwsgi_group %>
 
-socket = /tmp/uwsgi/%(project).sock
+socket = <%= sock_dir %>/%(project).sock
 master = true
 no-orphans = true
 
