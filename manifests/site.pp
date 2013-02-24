@@ -181,7 +181,7 @@ class uwsgi {
 }
 
 class mysql {
-  $create_db_cmd = "CREATE DATABASE ${db_name};"
+  $create_db_cmd = "CREATE DATABASE ${db_name} CHARACTER SET utf8;"
   $create_user_cmd = "CREATE USER '${db_user}'@localhost IDENTIFIED BY '${db_password}';"
   $grant_db_cmd = "GRANT ALL PRIVILEGES ON ${db_name}.* TO '${db_user}'@localhost;"
 
