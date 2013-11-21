@@ -7,7 +7,7 @@ base_dir = /home/<%= user %>/virtualenvs/<%= domain_name %>
 uid = <%= uwsgi_user %>
 gid = <%= uwsgi_group %>
 
-socket = <%= sock_dir %>/%(project).sock
+socket = <%= sock_dir %>/uwsgi_%(project).sock
 master = true
 no-orphans = true
 

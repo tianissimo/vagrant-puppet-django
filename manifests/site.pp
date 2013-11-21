@@ -128,7 +128,7 @@ class nginx {
 }
 
 class uwsgi { 
-  $sock_dir = '/tmp/uwsgi' # Without a trailing slash
+  $sock_dir = '/tmp' # Without a trailing slash
   $uwsgi_user = 'www-data'
   $uwsgi_group = 'www-data'
   

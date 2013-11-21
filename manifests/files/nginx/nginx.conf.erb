@@ -4,7 +4,7 @@ server {
         server_name <%= domain_name %>;
 
         location / {
-                uwsgi_pass unix:/tmp/uwsgi/<%= project %>.sock;
+                uwsgi_pass unix:/tmp/uwsgi_<%= project %>.sock;
                 include uwsgi_params;
         }
 
