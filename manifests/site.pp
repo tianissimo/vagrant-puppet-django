@@ -246,7 +246,7 @@ class virtualenv {
     command => "virtualenv ${domain_name}",
     cwd => "/home/${user}/virtualenvs",
     user => $user,
-    creates => "/home/pippinni/virtualenvs/${domain_name}",
+    creates => "/home/${user}/virtualenvs/${domain_name}",
     require => Package['virtualenv']
   }
 
