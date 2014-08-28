@@ -230,7 +230,7 @@ class python {
   }
 
   exec { 'install-pip':
-    command => 'curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python',
+    command => 'curl https://bootstrap.pypa.io/get-pip.py | python',
     require => Exec['install-distribute']
   }
 }
