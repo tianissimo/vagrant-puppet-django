@@ -224,13 +224,8 @@ class python {
     require => Class['apt']
   }
 
-  exec { 'install-distribute':
-    command => 'curl http://python-distribute.org/distribute_setup.py | python',
-    require => Package['python', 'curl']
-  }
-
   exec { 'install-pip':
-    command => 'curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python',
+    command => 'curl https://bootstrap.pypa.io/get-pip.py | python',
     require => Exec['install-distribute']
   }
 }
