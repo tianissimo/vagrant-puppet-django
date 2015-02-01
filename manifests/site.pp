@@ -226,7 +226,7 @@ class python {
 
   exec { 'install-pip':
     command => 'curl https://bootstrap.pypa.io/get-pip.py | python',
-    require => Exec['python', 'curl']
+    require => Package['python', 'curl']
   }
 }
 
