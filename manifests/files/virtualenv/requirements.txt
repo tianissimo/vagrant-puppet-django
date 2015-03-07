@@ -1,7 +1,6 @@
 Django
 Fabric
 MySQL-python
-PIL
-South
+Pillow
 django-compressor
 django-debug-toolbar
