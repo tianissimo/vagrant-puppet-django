@@ -1,16 +1,5 @@
 Exec { path => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin' }
 
-# Global variables
-$inc_file_path = '/vagrant/manifests/files' # Absolute path to the files directory (If you're using vagrant, you can leave it alone.)
-$tz = 'Asia/Bangkok' # Timezone
-$user = 'USERNAME' # User to create
-$password = 'PASSWORD' # The user's password
-$project = 'PROJECT_NAME' # Used in nginx and uwsgi
-$domain_name = 'PROJECT_DOMAIN_NAME.com' # Used in nginx, uwsgi and virtualenv directory
-$db_name = 'DB_NAME' # Mysql database name to create
-$db_user = 'DB_USER' # Mysql username to create
-$db_password = 'DB_PASSWORD' # Mysql password for $db_user
-
 include timezone
 include user
 include apt
@@ -155,6 +144,7 @@ class uwsgi {
   file { [$sock_dir]:
     ensure => directory,
     owner => "${uwsgi_user}",
+    group => "${uwsgi_user}",
     require => Package['uwsgi']
   }
 
@@ -238,10 +228,9 @@ class virtualenv {
   }
 
   exec { 'create virtualenv':
-    command => "virtualenv ${domain_name}",
+    command => "virtualenv --always-copy ${domain_name}",
     cwd => "/home/${user}/virtualenvs",
     user => $user,
-    creates => "/home/${user}/virtualenvs/${domain_name}",
     require => Package['virtualenv']
   }
 
