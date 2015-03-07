@@ -1,0 +1,9 @@
+inc_file_path: "/tmp/vagrant-puppet/files" # Absolute path to the puppet template files directory (No need to change it)
+tz: "Asia/Bangkok" # Timezone
+user: "USERNAME" # User to create
+password: "PASSWORD" # The user's password
+project: "PROJECT_NAME" # Django project folder or the name when you run django-admin.py startproject <PROJECT_NAME>
+domain_name: "PROJECT_DOMAIN_NAME.com" # Used in nginx, uwsgi and virtualenv directory
+db_name: "DB_NAME" # Mysql database name to create
+db_user: "DB_USER" # Mysql username to create
+db_password: "DB_PASSWORD" # Mysql password for the db_user
